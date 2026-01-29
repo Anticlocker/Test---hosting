@@ -8,11 +8,13 @@
 
 /* BODY BACKGROUND */
 body{
-  height:100vh;
+  min-height:100vh;                 /* scroll allow */
+  overflow-y:auto;                  /* enable scroll */
+  -webkit-overflow-scrolling: touch;
+
   background:
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
     url("IMG_20260129_202517.jpg") center / cover no-repeat;
-  overflow:hidden;
 }
 
 /* LOGO – TOP RIGHT */
