@@ -57,14 +57,15 @@ shayariEl.offsetHeight;
 shayariEl.innerText = shayariList[randomIndex];
 shayariEl.style.animation = "";
 
-let isColor = false;
+
+// Enable color on first touch / click
+let colorEnabled = false;
 
 function enableColor() {
-  if (!isColor) {
-    document.body.style.filter = "grayscale(0%)";
-    isColor = true;
-  }
+  if (colorEnabled) return;
+  document.body.classList.add('color-on');
+  colorEnabled = true;
 }
 
-document.addEventListener("click", enableColor);
-document.addEventListener("touchstart", enableColor);
+document.addEventListener('click', enableColor, { once: true });
+document.addEventListener('touchstart', enableColor, { once: true });
