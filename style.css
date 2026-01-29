@@ -9,13 +9,24 @@
 /* BODY BACKGROUND */
 body{
   margin: 0;
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-  url("IMG_20260129_202517.jpg") center / cover no-repeat;
-  filter: grayscale(100%);
-transition: filter 0.8s ease;
+  min-height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
+/* BACKGROUND LAYER */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("IMG_20260129_202517.jpg") center / cover no-repeat;
+  filter: grayscale(100%);
+  transition: filter 0.8s ease;
+  z-index: -1; /* keep behind content */
+}
 /* LOGO – TOP RIGHT */
 .logo{
   position:fixed;
@@ -90,4 +101,8 @@ transition: filter 0.8s ease;
     transform:translateY(0);
     filter:blur(0);
   }
+}
+/* COLOR ENABLE AFTER TOUCH */
+body.color-on::before{
+  filter: grayscale(0%);
 }
