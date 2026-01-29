@@ -13,6 +13,7 @@ body{
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
+  touch-action: manipulation;
 }
 
 /* BACKGROUND LAYER */
@@ -42,6 +43,7 @@ body::before{
   backdrop-filter: blur(6px);
   transition: all 0.3s ease;
   z-index:10;
+  pointer-events: auto;
 }
 
 .logo:hover{
