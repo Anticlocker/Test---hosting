@@ -56,3 +56,15 @@ shayariEl.style.animation = "none";
 shayariEl.offsetHeight;
 shayariEl.innerText = shayariList[randomIndex];
 shayariEl.style.animation = "";
+
+let isColor = false;
+
+function enableColor() {
+  if (!isColor) {
+    document.body.style.filter = "grayscale(0%)";
+    isColor = true;
+  }
+}
+
+document.addEventListener("click", enableColor);
+document.addEventListener("touchstart", enableColor);
