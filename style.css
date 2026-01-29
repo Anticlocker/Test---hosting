@@ -18,10 +18,9 @@ body{
 /* LOGO – TOP RIGHT */
 .logo{
   position:fixed;
-  top:70px;
+  top:20px;
   right:20px;
   color:white;
-  font-size: 28px; 
   text-decoration:none;
   border:2px solid white;
   padding:10px 18px;
@@ -55,13 +54,13 @@ body{
 
 #shayari{
   position:fixed;
-  bottom:14px;
+  bottom:18px;
   width:100%;
   text-align:center;
   padding:0 22px;
 
   color:#cfe9ff;              /* soft blue */
-  font-size:13px;
+  font-size:24px;
   font-style:italic;
   line-height:1.6;
   white-space:pre-line;
