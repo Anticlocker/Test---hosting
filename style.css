@@ -1,15 +1,21 @@
+/* RESET */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+/* BODY BACKGROUND */
 body{
   height:100vh;
   background:
-    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
-    url("IMG_20260129_202517.jpg") center/cover no-repeat;
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("IMG_20260129_202517.jpg") center / cover no-repeat;
+  overflow:hidden;
 }
+
+/* LOGO – TOP RIGHT */
 .logo{
   position:fixed;
   top:20px;
@@ -21,16 +27,66 @@ body{
   border-radius:30px;
   letter-spacing:3px;
   background:rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  z-index:10;
 }
+
 .logo:hover{
   background:white;
   color:black;
 }
+
+/* CENTER HINT TEXT */
 .center-text{
   position:absolute;
-  bottom:30px;
+  bottom:50px;
   width:100%;
   text-align:center;
   color:#ddd;
   font-size:14px;
+  opacity:0.8;
+}
+
+/* ===============================
+   SHAYARI – BLUE FADE REVEAL
+   =============================== */
+
+#shayari{
+  position:fixed;
+  bottom:14px;
+  width:100%;
+  text-align:center;
+  padding:0 22px;
+
+  color:#cfe9ff;              /* soft blue */
+  font-size:13px;
+  font-style:italic;
+  line-height:1.6;
+  white-space:pre-line;
+
+  opacity:0;
+  transform:translateY(10px);
+  filter:blur(6px);
+
+  animation: blueFadeReveal 1.8s ease forwards;
+  z-index:5;
+}
+
+/* BLUE FADE ANIMATION */
+@keyframes blueFadeReveal{
+  0%{
+    opacity:0;
+    transform:translateY(12px);
+    filter:blur(6px);
+  }
+  60%{
+    opacity:0.6;
+    filter:blur(2px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
 }
