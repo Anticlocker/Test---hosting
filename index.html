@@ -27,9 +27,9 @@
   <source src="/assets/music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Three.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// Three.js Scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
@@ -38,6 +38,7 @@ document.body.appendChild(renderer.domElement);
 
 camera.position.z = 5;
 
+// Load petal texture
 const textureLoader = new THREE.TextureLoader();
 const petalTexture = textureLoader.load('/assets/petal.png');
 
@@ -57,6 +58,7 @@ for(let i=0;i<PETAL_COUNT;i++){
   petals.push(petal);
 }
 
+// Animate petals
 function animate(){
   requestAnimationFrame(animate);
 
@@ -70,6 +72,7 @@ function animate(){
 }
 animate();
 
+// Responsive
 window.addEventListener('resize',()=>{
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth/window.innerHeight;
