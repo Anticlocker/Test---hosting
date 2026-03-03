@@ -1,110 +1,105 @@
-/* RESET */
+/* style.css */
+
+/* Reset & body */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* BODY BACKGROUND */
 body{
-  margin: 0;
-  min-height: 100vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  touch-action: manipulation;
+  overflow:hidden;
+  background: linear-gradient(135deg,#fceabb,#f8b500,#ff758c);
+  font-family: 'Poppins', sans-serif;
+  touch-action: none;
 }
 
-/* BACKGROUND LAYER */
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("motion_photo_5857150418775971723.jpg") center / cover no-repeat;
-  filter: grayscale(100%);
-  transition: filter 0.8s ease;
-  z-index: -1; /* keep behind content */
-}
-/* LOGO – TOP RIGHT */
-.logo{
-  position:fixed;
-  top:20px;
-  right:20px;
-  color:white;
-  text-decoration:none;
-  border:2px solid white;
-  padding:10px 18px;
-  border-radius:30px;
-  letter-spacing:3px;
-  background:rgba(0,0,0,0.3);
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease;
-  z-index:10;
-  pointer-events: auto;
-}
-
-.logo:hover{
-  background:white;
-  color:black;
-}
-
-/* CENTER HINT TEXT */
-.center-text{
+/* Wedding Card */
+.card{
   position:absolute;
-  bottom:50px;
-  width:100%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  backdrop-filter: blur(25px);
+  background: rgba(255,255,255,0.2);
+  padding:50px 30px;
+  border-radius:25px;
   text-align:center;
-  color:#ddd;
-  font-size:14px;
-  opacity:0.8;
+  width:90%;
+  max-width:550px;
+  box-shadow:0 0 40px rgba(255,255,255,0.4);
+  color:white;
 }
 
-/* ===============================
-   SHAYARI – BLUE FADE REVEAL
-   =============================== */
+.card h1{
+  font-family:'Playfair Display', serif;
+  font-size:2.5rem;
+  margin-bottom:15px;
+}
 
-#shayari{
+.card p{
+  margin-bottom:30px;
+  font-size:16px;
+}
+
+/* Glass Download Button */
+.glass-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.4s ease;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Music Button */
+.music-btn{
   position:fixed;
-  bottom:18px;
-  width:100%;
-  text-align:center;
-  padding:0 22px;
-
-  color:#cfe9ff;              /* soft blue */
+  bottom:20px;
+  right:20px;
+  background:white;
+  border:none;
+  border-radius:50%;
+  width:50px;
+  height:50px;
   font-size:20px;
-  font-style:italic;
-  line-height:1.6;
-  white-space:pre-line;
-
-  opacity:0;
-  transform:translateY(10px);
-  filter:blur(6px);
-
-  animation: blueFadeReveal 1.8s ease forwards;
-  z-index:5;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  z-index:100;
 }
 
-/* BLUE FADE ANIMATION */
-@keyframes blueFadeReveal{
-  0%{
-    opacity:0;
-    transform:translateY(12px);
-    filter:blur(6px);
-  }
-  60%{
-    opacity:0.6;
-    filter:blur(2px);
-  }
-  100%{
-    opacity:1;
-    transform:translateY(0);
-    filter:blur(0);
-  }
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
-/* COLOR ENABLE AFTER TOUCH */
-body.color-on::before{
-  filter: grayscale(0%);
+
+/* Responsive text */
+@media (max-width: 480px){
+  .card h1{
+    font-size:2rem;
+  }
+  .card p{
+    font-size:14px;
+  }
+  .glass-btn{
+    font-size:14px;
+    padding:10px 25px;
+  }
 }
