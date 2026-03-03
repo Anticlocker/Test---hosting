@@ -1,20 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RAV1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<a href="https://instagram.com/itz_ravii__04" class="logo" target="_blank">
-  RAV1
-</a>
+<div class="card">
+  <h1>💍 You're Invited 💍</h1>
+  <p>We invite you to celebrate our special day and share in our joy.</p>
 
-<div class="center-text">R C</div>
-  <div id="shayari"></div>
-<script src="Script.js"></script>
+  <a href="/assets/invitation-card.pdf" download class="glass-btn">
+    💌 Download Invitation
+  </a>
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<audio id="bgMusic" loop>
+  <source src="/assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Three.js Scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+camera.position.z = 5;
+
+const textureLoader = new THREE.TextureLoader();
+const petalTexture = textureLoader.load('/assets/petal.png');
+
+const petals = [];
+const PETAL_COUNT = window.innerWidth < 480 ? 80 : 150;
+
+for(let i=0;i<PETAL_COUNT;i++){
+  const geometry = new THREE.PlaneGeometry(0.5,0.5);
+  const material = new THREE.MeshBasicMaterial({map:petalTexture, transparent:true});
+  const petal = new THREE.Mesh(geometry, material);
+
+  petal.position.x = (Math.random()-0.5)*10;
+  petal.position.y = Math.random()*6;
+  petal.position.z = (Math.random()-0.5)*5;
+
+  scene.add(petal);
+  petals.push(petal);
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+
+  petals.forEach(petal=>{
+    petal.position.y -= 0.01;
+    petal.rotation.z += 0.01;
+    if(petal.position.y < -3) petal.position.y = 3;
+  });
+
+  renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+
+// Music toggle
+const music = document.getElementById("bgMusic");
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
+}
+</script>
 
 </body>
 </html>
